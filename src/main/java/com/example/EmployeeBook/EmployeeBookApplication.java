@@ -18,5 +18,4 @@ public class EmployeeBookApplication {
 		emplList.add(em);
 		System.out.println(emplList.contains(em));
 	}
-
 }

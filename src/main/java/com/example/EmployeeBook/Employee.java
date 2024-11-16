@@ -13,6 +13,7 @@ public class Employee {
         this.salary = salary;
     }
 
+
     //Геттеры и сеттеры
 
     public int getDepartment() {
