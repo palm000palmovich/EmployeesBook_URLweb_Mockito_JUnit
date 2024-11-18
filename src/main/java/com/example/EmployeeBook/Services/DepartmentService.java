@@ -12,8 +12,6 @@ public class DepartmentService {
     @Autowired
     private EmployeeService emser;
 
-    //вывод сотрудников из отдела
-    //Затестить, что возвращаются сотр-ки НУЖНОГО отдела
     public List<Employee> emplInDep(int id){
         List<Employee> emplsInDep = emser.getEmployees().stream()
                 .filter(empl -> empl.getDepartment() == id)
@@ -21,8 +19,6 @@ public class DepartmentService {
         return emplsInDep;
     }
 
-    //Cумма зп в отделе
-    //Тест на корректность суммы
     public int sumSalaryInDep(int id){
         int sumSal = emser.getEmployees().stream()
                 .filter(e -> e.getDepartment() == id)
@@ -31,8 +27,6 @@ public class DepartmentService {
         return sumSal;
     }
 
-    //Максимальная зп по отделу
-    //Тест на корректность макс зп
     public int maxSalInDep(int id){
         List<Integer> allSalarysInDep = new ArrayList<>();
         for (int i = 0; i < emser.getEmployees().size(); i++) {
@@ -47,8 +41,6 @@ public class DepartmentService {
         return maxSal;
     }
 
-    //Минимальная зп по отделу
-    //Тест на корректность зп по отделу
     public int minSalInDep(int id){
         List<Integer> allSalarysInDep = new ArrayList<>();
         for (int i = 0; i < emser.getEmployees().size(); i++) {
@@ -63,8 +55,6 @@ public class DepartmentService {
         return minSal;
     }
 
-    //Вывод сотрудников в виде мапа
-    //Тест на порядок вывода отделов, корректность вывода сотр-ков по отделам
     public Map<Integer, List<Employee>> emplInDepInMap(){
         List<Integer> listOfDepartments = new ArrayList<>();
         for (int i = 0; i < emser.getEmployees().size(); i++) {

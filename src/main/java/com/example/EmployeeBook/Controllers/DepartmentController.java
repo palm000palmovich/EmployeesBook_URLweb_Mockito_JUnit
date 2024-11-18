@@ -14,7 +14,6 @@ import java.util.Map;
 @RequestMapping("/department")
 public class DepartmentController {
     private final DepartmentService depSer;
-
     public DepartmentController(DepartmentService depSer){
         this.depSer = depSer;
     }

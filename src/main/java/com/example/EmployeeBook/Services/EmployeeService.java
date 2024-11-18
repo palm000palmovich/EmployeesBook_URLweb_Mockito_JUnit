@@ -14,16 +14,15 @@ public class EmployeeService{
 
     //Добавление сотрудников
     //Затестить, что вылетает искл-е иначе правильность заполнения списка
-    public String addEmpls(int dep, String fio, int sal){
-        Employee empl = new Employee(dep, fio, sal);
-        if (employees.size() != 0){
-            for (int i = 0; i < employees.size(); i++) {
-                if (employees.get(i).getDepartment() == empl.getDepartment() &&
-                        employees.get(i).getFio().equals(empl.getFio()) &&
-                        employees.get(i).getSalary() == empl.getSalary()){
-                    throw new EmployeeAlreadyAddedException("Этот сотрудник уже есть!");
-                }
-            }
+    public String addEmpls(Employee empl){
+        if (employees == null){
+            employees = new ArrayList<>();
+        }
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getDepartment() == empl.getDepartment() &&
+                    employees.get(i).getFio().equals(empl.getFio()) &&
+                    employees.get(i).getSalary() == empl.getSalary()){
+                return "Этот сотрудник уже есть!";}
         }
         employees.add(empl);
         return "Сотрудник успешно добавлен!";
@@ -31,23 +30,19 @@ public class EmployeeService{
 
     //Вывод всех сотрудников
     public List<Employee> getEmployees(){
-        return employees;
+        return new ArrayList<>(employees);
     }
 
     //Удаление сотрудников
-    public String remEmpl(int id, String fio, int salary){
-        Employee empl = new Employee(id, fio, salary);
-        if (employees.size() != 0){
-            for (int i = 0; i < employees.size(); i++) {
-                if (employees.get(i).getDepartment() == empl.getDepartment() &&
-                        employees.get(i).getFio().equals(empl.getFio()) &&
-                        employees.get(i).getSalary() == empl.getSalary()){
-                    Employee emToRem = employees.get(i);
-                    employees.remove(emToRem);
-                    return "Сотрудник успешно удален!";
-                }
+    public String remEmpl(Employee empl){
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getDepartment() == empl.getDepartment() &&
+            employees.get(i).getFio().equals(empl.getFio()) &&
+                    employees.get(i).getSalary() == empl.getSalary()){
+                employees.remove(employees.get(i));
+                return "Сотрудник успешно удален!";
             }
         }
-        throw new EmployeeIsNotInListException("Такого сотрудника в списке нет!");
+        return "Такого сотрудника нет!";
     }
 }

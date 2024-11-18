@@ -46,13 +46,13 @@
 			<version>4.1.0</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.8.1</version>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.4.0</version> <!-- Убедитесь, что версия актуальна -->
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
